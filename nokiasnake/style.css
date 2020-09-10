@@ -1,0 +1,340 @@
+:root{
+    --main-outline: 1px solid black;
+    --tile-border: 1px solid rgba(5, 196, 107,0.4);
+    --tile-width: calc(100% / 16);
+    --tile-height: calc(100% / 16);
+    --side-bg-color: rgba(24, 44, 97,1.0);
+}
+
+@font-face {
+    font-family: "CustomFont";
+    src:url('fonts/BalsamiqSans-Regular.ttf');
+}
+
+html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    font-family: 'CustomFont';   
+    background-image: url('bg_main.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* background: linear-gradient(to right, rgba(249, 127, 81,1.0), rgba(234, 181, 67,1.0)); */
+}
+
+body{
+    width: 80%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.main-container{
+    width: 80%;
+    height: 60%; 
+    box-sizing: border-box;
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    border:1px solid black;
+    box-shadow: 0 0 5px rgba(68, 189, 50,1.0);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+/* game container */
+
+.main-container .game-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    outline: var(--testing-outline);
+    background: linear-gradient(to right, #34e7e4,#0be881);
+
+}
+
+.main-container .game-container .tile{
+    box-sizing: border-box;
+    border-right: var(--tile-border);
+    border-bottom: var(--tile-border);
+    height: var(--tile-height);
+    width: var(--tile-width);
+    font-size: 1.3rem;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+.main-container .game-container .tile .move__right{
+    background-color: #000;
+    width: 0%;
+    height: 100%;
+    display: block;
+    
+    animation-name: move__right;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;     
+}
+
+
+.main-container .game-container .tile.active{
+    background-color: rgba(24, 44, 97,1.0);
+}
+.main-container .game-container .tile .active{
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+/* game container */
+
+/* result container */
+.result-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    width: 20%;
+    font-size: 2rem;
+    background-color: var(--side-bg-color);
+    color: white;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.result-container *{
+    margin: 0;
+    padding: 0;
+}
+
+/* result container */
+
+
+
+/* contorls container */
+
+.controls-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 20%;
+    background-color: var(--side-bg-color);
+    color:white;
+    box-sizing: border-box;
+
+}
+
+.controls-container .start{
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 500;
+    width: 100%;
+    height: 60%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.controls-container .start #startGame{
+    border: 1px solid white;
+    border-radius: 10rem;
+    width: 80%;
+    height: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 10rem;
+    border-radius: 50%;
+}
+
+.controls-container .start #startGame:hover{
+    background-color: rgba(255,255,255,1.0);
+    color: var(--side-bg-color);
+    font-weight: 600;
+
+}
+.controls-container .controls{
+    
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    text-align: center;
+    margin-top: 5%;
+    font-size: 2rem;    
+    width: 90%;
+}
+
+.controls div{
+    margin-bottom: 5%;
+}
+
+
+.controls .up:hover, #left:hover, #right:hover, .down:hover{
+    cursor: pointer;
+    font-weight: 600;
+}    
+
+.controls .up:hover, #left:hover, #right:hover, .down:hover i{
+    color: green;
+}
+.controls .horizontal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+/* contorls container*/
+
+/* media queries */
+
+@media only screen and (max-width: 600px) {
+    html{
+        background: url('bg.jpg');
+        object-fit: cover;
+    }
+    body{
+        width: 100%;
+        height: 90%;
+    }
+
+    .main-container{
+        width: 95%;
+        height: 90%;
+        flex-direction: column;
+    }
+
+    body .main-container .result-container{
+        height: 15%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;        
+        text-align: center;
+        font-size: 1.5rem;
+        align-items: center;
+    }
+
+    body .main-container .result-container div{
+        flex:1;
+        
+    }
+
+    .controls-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    .controls-container .controls{
+        width: 48%;
+    }
+    .controls-container .controls div{
+        margin-bottom: 2%;
+    }
+    .controls-container .start #startGame{
+        width: 60%;
+        height: 8rem;
+        line-height: 8rem;
+    }
+
+    .controls-container .start{
+        width: 50%;
+    }
+
+
+
+    body .modal-div .modal-container{
+        width: 80%;
+        font-size: 2rem;
+        left: 10%;
+    }
+
+  }
+/* media queries */
+
+
+@keyframes move__right {
+    0% {
+      width: 0%;
+    }
+    25% {
+      width: 25%;
+    }
+    50% {
+      width: 50%;
+    }
+    75% {
+      width: 75%;
+    }    
+    100% {
+        width: 100%;
+    }
+  }
+@keyframes fill__out {
+    0% {
+      width: 100%;
+    }
+    25% {
+      width: 75%;
+    }
+    50% {
+      width: 50%;
+    }
+    75% {
+      width: 25%;
+    }    
+    100% {
+        width: 0%;
+    }
+  }
+
+
+/* modal */
+ .modal-div{
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(149, 175, 192,0.2);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+    
+}
+
+
+ .modal-div .modal-container{
+    position: absolute;
+    top: 20%;
+    height: 10%;
+    left: 30%;
+    width: 40%;
+    border-radius: 1rem;
+    background-color: rgba(235, 77, 75,1.0);
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+ .modal-div .modal-container p{
+    margin: 0;
+    text-align: center;
+    color: #fff;
+}
+/* modal */
